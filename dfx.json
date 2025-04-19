@@ -1,0 +1,66 @@
+{
+  "canisters": {
+    "exam_creation": {
+      "main": "src/backend/exam_creation/main.mo",
+      "type": "motoko"
+    },
+    "exam_admin": {
+      "main": "src/backend/exam_admin/main.mo",
+      "type": "motoko"
+    },
+    "blockchain": {
+      "main": "src/backend/blockchain/main.mo",
+      "type": "motoko"
+    },
+    "audit": {
+      "main": "src/backend/audit/main.mo",
+      "type": "motoko"
+    },
+    "monitoring": {
+      "main": "src/backend/monitoring/main.mo",
+      "type": "motoko"
+    },
+    "distribution": {
+      "main": "src/backend/distribution/main.mo",
+      "type": "motoko"
+    },
+    "frontend": {
+      "dependencies": [
+        "exam_creation",
+        "exam_admin",
+        "blockchain",
+        "audit",
+        "monitoring",
+        "distribution"
+      ],
+      "frontend": {
+        "entrypoint": "src/frontend/public/index.html"
+      },
+      "source": [
+        "src/frontend/assets",
+        "src/frontend/public"
+      ],
+      "type": "assets"
+    },
+    "internet_identity": {
+      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
+      "frontend": {},
+      "remote": {
+        "id": {
+          "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+        }
+      },
+      "type": "custom",
+      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1,
+  "dfx": "0.15.0"
+}
